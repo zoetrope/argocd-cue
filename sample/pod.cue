@@ -1,5 +1,11 @@
 package kube
 
+import (
+  "k8s.io/api/core/v1"
+)
+
+pod: [string]: v1.Pod
+
 pod: test: {
 	apiVersion: "v1"
 	kind:       "Pod"
