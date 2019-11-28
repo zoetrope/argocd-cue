@@ -6,20 +6,24 @@ import (
 
 pod: [string]: v1.Pod
 
-pod: test: {
+pod: <Name>: {
 	apiVersion: "v1"
 	kind:       "Pod"
 	metadata: {
-		name: "test"
+		name: Name
 		labels: app: "testhttpd"
 	}
 	spec: containers: [{
 		image:           "quay.io/cybozu/testhttpd:0.1.0"
 		imagePullPolicy: "IfNotPresent"
-		name:            "test"
+		name:            Name
 		ports: [{
 			containerPort: 8000
 			protocol:      "TCP"
 		}]
 	}]
+}
+
+for x in [ "test1", "test2", "test3" ] {
+	pod "\(x)": {}
 }
